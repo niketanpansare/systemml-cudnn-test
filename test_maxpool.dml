@@ -1,0 +1,7 @@
+N = 5
+C = 3
+H = 28
+W = 28
+X = matrix(seq(N*C*H*W - H, 1 -H), rows=N, cols=C*H*W)
+out = max_pool(X, input_shape=[N,C,H,W], pool_size=[$pool,$pool], stride=[$stride,$stride], padding=[$pad,$pad])
+write(out, $out, format="csv")

@@ -1,0 +1,10 @@
+N = 5
+C = 3
+H = 28
+W = 28
+X = matrix(seq(N*C*H*W - H, 1-H), rows=N, cols=C*H*W)
+P = floor(((H + 2 * $pad - $pool) / $stride) + 1)
+Q = floor(((W + 2 * $pad - $pool) / $stride) + 1)
+dout = matrix(seq(N*C*P*Q - P, 1-P), rows=N, cols=C*P*Q)
+out = max_pool_backward(X, dout, input_shape=[N,C,H,W], pool_size=[$pool,$pool], stride=[$stride,$stride], padding=[$pad,$pad])
+write(out, $out, format="csv")
